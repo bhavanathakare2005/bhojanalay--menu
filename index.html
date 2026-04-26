@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Shri Venkatesh Bhojanalay</title>
+
+<style>
+body {
+  font-family: Arial;
+  margin: 0;
+  background: #f5f5dc;
+  text-align: center;
+}
+
+/* HEADER */
+.header {
+  background: green;
+  color: white;
+  padding: 20px;
+  font-size: 24px;
+}
+
+/* PAGE STYLE */
+.page {
+  display: none;
+  padding: 20px;
+}
+
+.active {
+  display: block;
+}
+
+/* CARD */
+.card {
+  background: white;
+  margin: 15px auto;
+  padding: 15px;
+  border-radius: 12px;
+  width: 250px;
+  box-shadow: 2px 2px 10px gray;
+}
+
+.price {
+  color: green;
+  font-weight: bold;
+}
+
+/* BUTTON */
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  background: green;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">Shri Venkatesh Bhojanalay</div>
+
+<!-- PAGE 1 -->
+<div class="page active">
+  <h2>Welcome 🙏</h2>
+  <p>Fresh Food Available Daily</p>
+</div>
+
+<!-- PAGE 2 (Tea / Coffee / Taak) -->
+<div class="page">
+  <h2>Tea / Coffee / Taak</h2>
+
+  <div class="card">
+    <h3>Tea</h3>
+    <p class="price">₹10</p>
+  </div>
+
+  <div class="card">
+    <h3>Coffee</h3>
+    <p class="price">₹15</p>
+  </div>
+
+  <div class="card">
+    <h3>Masala Taak</h3>
+    <p class="price">₹10</p>
+  </div>
+</div>
+
+<!-- PAGE 3 (Morning Bhaji Poli) -->
+<div class="page">
+  <h2>7:30 AM - Morning Special</h2>
+
+  <div class="card">
+    <h3>Bhaji Poli</h3>
+    <p class="price">₹50</p>
+    <p>(You can change bhaji rates daily)</p>
+  </div>
+</div>
+
+<!-- PAGE 4 (Lunch + Dinner) -->
+<div class="page">
+  <h2>Lunch & Dinner</h2>
+
+  <div class="card">
+    <h3>Full Thali</h3>
+    <p class="price">₹90</p>
+  </div>
+
+  <div class="card">
+    <h3>Dinner Available</h3>
+    <p>From 12:30 PM onwards</p>
+  </div>
+</div>
+
+<!-- BUTTONS -->
+<button onclick="prevPage()">⬅ Previous</button>
+<button onclick="nextPage()">Next ➡</button>
+
+<script>
+let currentPage = 0;
+let pages = document.querySelectorAll(".page");
+
+function showPage(index) {
+  pages.forEach((p, i) => {
+    p.classList.remove("active");
+    if (i === index) p.classList.add("active");
+  });
+}
+
+function nextPage() {
+  currentPage = (currentPage + 1) % pages.length;
+  showPage(currentPage);
+}
+
+function prevPage() {
+  currentPage = (currentPage - 1 + pages.length) % pages.length;
+  showPage(currentPage);
+}
+</script>
+
+</body>
+</html>
