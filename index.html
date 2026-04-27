@@ -1,206 +1,307 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Shree Venkatesh Bhojanalay</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Shree Venkatesh Bhojanalay menu and WhatsApp ordering" />
+  <title>Shree Venkatesh Bhojanalay</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #fffdf5;
+      --card: #ffffff;
+      --brand: #176b2f;
+      --brand-2: #25d366;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --special: #fff8dc;
+      --shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      --radius: 10px;
+    }
 
-<style>
-body {
-  font-family: Arial;
-  margin: 0;
-  background: #f5f5dc;
-  text-align: center;
-}
+    * { box-sizing: border-box; }
 
-/* HEADER */
-.header {
-  background: white;
-  padding: 10px;
-  position: sticky;
-  top: 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
 
-.logo {
-  width: 90px;
-  border-radius: 50%;
-}
+    .app {
+      max-width: 560px;
+      margin: 0 auto;
+      min-height: 100vh;
+      padding-bottom: 90px; /* keeps content above fixed nav */
+    }
 
-.header h2 {
-  margin: 5px 0 0;
-  color: green;
-  font-size: 18px;
-}
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      text-align: center;
+      padding: 10px 14px;
+    }
 
-/* PAGE */
-.page {
-  display: none;
-  padding: 15px;
-}
+    .logo {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #f3f4f6;
+    }
 
-.active {
-  display: block;
-}
+    .title {
+      margin: 6px 0 2px;
+      color: var(--brand);
+      font-size: 18px;
+    }
 
-/* CARD */
-.card {
-  background: white;
-  margin: 12px auto;
-  padding: 15px;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 2px 2px 10px gray;
-}
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
 
-.price {
-  color: green;
-  font-weight: bold;
-  font-size: 18px;
-}
+    .page {
+      display: none;
+      padding: 14px;
+    }
 
-/* SPECIAL */
-.special {
-  background: #fff8dc;
-  border: 2px solid orange;
-}
+    .page.active { display: block; }
 
-/* BUTTON BAR */
-.nav {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: white;
-  padding: 10px;
-  box-shadow: 0 -2px 10px gray;
-}
+    .page h2 {
+      margin: 6px 0 14px;
+      font-size: 20px;
+      text-align: left;
+    }
 
-/* BUTTON */
-button {
-  padding: 12px;
-  margin: 5px;
-  border: none;
-  background: green;
-  color: white;
-  border-radius: 8px;
-  font-size: 16px;
-  width: 40%;
-}
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 14px;
+      margin-bottom: 12px;
+      text-align: left;
+    }
 
-/* WHATSAPP */
-.whatsapp {
-  display: block;
-  margin: 20px auto;
-  padding: 12px;
-  width: 80%;
-  background: #25D366;
-  color: white;
-  border-radius: 10px;
-  text-decoration: none;
-  font-size: 16px;
-}
-</style>
+    .card.special {
+      background: var(--special);
+      border-color: #f59e0b;
+    }
 
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .price {
+      color: var(--brand);
+      font-weight: 700;
+      font-size: 18px;
+      margin: 6px 0 0;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 8px 0 0;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .btn-order {
+      background: var(--brand-2);
+      color: #fff;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .btn-order:hover { filter: brightness(0.95); }
+
+    .cta {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    .nav {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #fff;
+      border-top: 1px solid var(--border);
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+      padding: 10px 12px;
+    }
+
+    .nav-inner {
+      max-width: 560px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-btn {
+      background: var(--brand);
+      color: #fff;
+      width: 100%;
+    }
+
+    .indicator {
+      font-size: 13px;
+      color: var(--muted);
+      text-align: center;
+      min-width: 56px;
+    }
+
+    .btn:focus-visible,
+    .nav-btn:focus-visible {
+      outline: 3px solid #93c5fd;
+      outline-offset: 1px;
+    }
+  </style>
 </head>
-
 <body>
+  <div class="app" id="app">
+    <header class="header">
+      <img src="logo.jpeg" class="logo" alt="Shree Venkatesh Bhojanalay logo" />
+      <h1 class="title">Shree Venkatesh Bhojanalay</h1>
+      <p class="subtitle">Fresh food available daily</p>
+    </header>
 
-<!-- HEADER -->
-<div class="header">
-  <img src="logo.jpeg" class="logo">
-  <h2>Shree Venkatesh Bhojanalay</h2>
-</div>
+    <section class="page active" data-page>
+      <h2>Welcome</h2>
+      <article class="card special">
+        <h3>Today’s Special</h3>
+        <p>Bhaji Poli + Taak</p>
+        <p class="price">₹60</p>
+        <a class="btn btn-order" data-item="Today's Special: Bhaji Poli + Taak (₹60)" href="#">Order This on WhatsApp</a>
+      </article>
+      <a class="btn btn-order cta" href="https://wa.me/919307184905" target="_blank" rel="noopener">
+        Open WhatsApp
+      </a>
+    </section>
 
-<!-- PAGE 1 -->
-<div class="page active">
-  <h2>Welcome 🙏</h2>
-  <p>Fresh Food Available Daily</p>
+    <section class="page" data-page>
+      <h2>Tea / Coffee / Taak</h2>
 
-  <div class="card special">
-    <h3>⭐ Today Special</h3>
-    <p>Bhaji Poli + Taak</p>
-    <p class="price">₹60</p>
+      <article class="card">
+        <div class="row"><h3>Tea</h3><strong>₹10</strong></div>
+        <a class="btn btn-order" data-item="Tea (₹10)" href="#">Order Tea</a>
+      </article>
+
+      <article class="card">
+        <div class="row"><h3>Coffee</h3><strong>₹15</strong></div>
+        <a class="btn btn-order" data-item="Coffee (₹15)" href="#">Order Coffee</a>
+      </article>
+
+      <article class="card">
+        <div class="row"><h3>Masala Taak</h3><strong>₹10</strong></div>
+        <a class="btn btn-order" data-item="Masala Taak (₹10)" href="#">Order Taak</a>
+      </article>
+    </section>
+
+    <section class="page" data-page>
+      <h2>Morning Special (7:30 AM)</h2>
+      <article class="card">
+        <div class="row"><h3>Bhaji Poli</h3><strong>₹50</strong></div>
+        <p class="note">Rates may change daily.</p>
+        <a class="btn btn-order" data-item="Bhaji Poli (₹50)" href="#">Order Bhaji Poli</a>
+      </article>
+    </section>
+
+    <section class="page" data-page>
+      <h2>Lunch & Dinner</h2>
+      <article class="card">
+        <div class="row"><h3>Full Thali</h3><strong>₹90</strong></div>
+        <a class="btn btn-order" data-item="Full Thali (₹90)" href="#">Order Full Thali</a>
+      </article>
+      <article class="card">
+        <h3>Timing</h3>
+        <p>Lunch: 12:30 PM onwards</p>
+        <p>Dinner: 7:30 PM onwards</p>
+      </article>
+    </section>
   </div>
 
-  <a href="https://wa.me/919307184905" class="whatsapp">
-    📲 Order on WhatsApp
-  </a>
-</div>
+  <nav class="nav">
+    <div class="nav-inner">
+      <button class="btn nav-btn" id="prevBtn" type="button">Prev</button>
+      <div class="indicator" id="indicator">1 / 4</div>
+      <button class="btn nav-btn" id="nextBtn" type="button">Next</button>
+    </div>
+  </nav>
 
-<!-- PAGE 2 -->
-<div class="page">
-  <h2>Tea / Coffee / Taak</h2>
+  <script>
+    const phone = "919307184905";
+    const pages = Array.from(document.querySelectorAll("[data-page]"));
+    const indicator = document.getElementById("indicator");
+    let currentPage = 0;
 
-  <div class="card">
-    <h3>Tea</h3>
-    <p class="price">₹10</p>
-  </div>
+    function showPage(index) {
+      pages.forEach((page, i) => page.classList.toggle("active", i === index));
+      indicator.textContent = `${index + 1} / ${pages.length}`;
+    }
 
-  <div class="card">
-    <h3>Coffee</h3>
-    <p class="price">₹15</p>
-  </div>
+    function nextPage() {
+      currentPage = (currentPage + 1) % pages.length;
+      showPage(currentPage);
+    }
 
-  <div class="card">
-    <h3>Masala Taak</h3>
-    <p class="price">₹10</p>
-  </div>
-</div>
+    function prevPage() {
+      currentPage = (currentPage - 1 + pages.length) % pages.length;
+      showPage(currentPage);
+    }
 
-<!-- PAGE 3 -->
-<div class="page">
-  <h2>Morning Special (7:30 AM)</h2>
+    document.getElementById("nextBtn").addEventListener("click", nextPage);
+    document.getElementById("prevBtn").addEventListener("click", prevPage);
 
-  <div class="card">
-    <h3>Bhaji Poli</h3>
-    <p class="price">₹50</p>
-    <p>(Rates may change daily)</p>
-  </div>
-</div>
+    // WhatsApp message generator for item-specific ordering
+    document.querySelectorAll("[data-item]").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const item = btn.getAttribute("data-item");
+        const text = `Namaste! I want to order: ${item}.`;
+        const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+        window.open(url, "_blank", "noopener");
+      });
+    });
 
-<!-- PAGE 4 -->
-<div class="page">
-  <h2>Lunch & Dinner</h2>
+    // Simple swipe navigation (mobile)
+    let startX = 0;
+    const app = document.getElementById("app");
 
-  <div class="card">
-    <h3>Full Thali</h3>
-    <p class="price">₹90</p>
-  </div>
+    app.addEventListener("touchstart", (e) => {
+      startX = e.changedTouches[0].clientX;
+    }, { passive: true });
 
-  <div class="card">
-    <h3>Dinner Timing</h3>
-    <p>From 12:30 PM onwards</p>
-  </div>
-</div>
-
-<!-- NAVIGATION -->
-<div class="nav">
-  <button onclick="prevPage()">⬅ Prev</button>
-  <button onclick="nextPage()">Next ➡</button>
-</div>
-
-<script>
-let currentPage = 0;
-let pages = document.querySelectorAll(".page");
-
-function showPage(index) {
-  pages.forEach((p, i) => {
-    p.classList.remove("active");
-    if (i === index) p.classList.add("active");
-  });
-}
-
-function nextPage() {
-  currentPage = (currentPage + 1) % pages.length;
-  showPage(currentPage);
-}
-
-function prevPage() {
-  currentPage = (currentPage - 1 + pages.length) % pages.length;
-  showPage(currentPage);
-}
-</script>
-
+    app.addEventListener("touchend", (e) => {
+      const endX = e.changedTouches[0].clientX;
+      const diff = startX - endX;
+      if (Math.abs(diff) < 40) return;
+      if (diff > 0) nextPage();
+      else prevPage();
+    }, { passive: true });
+  </script>
 </body>
 </html>

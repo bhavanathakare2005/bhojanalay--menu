@@ -1,0 +1,17 @@
+{
+  "name": "Shree Venkatesh Bhojanalay",
+  "short_name": "SV Bhojanalay",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fffdf6",
+  "theme_color": "#176b2f",
+  "description": "Restaurant and mess menu with quick WhatsApp ordering.",
+  "icons": [
+    {
+      "src": "./assets/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

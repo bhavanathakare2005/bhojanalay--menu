@@ -1,0 +1,157 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fffdf6;
+  color: #1f2937;
+  line-height: 1.4;
+}
+
+.skip-link {
+  position: absolute;
+  left: -10000px;
+  top: 0;
+}
+
+.skip-link:focus {
+  left: 10px;
+  top: 10px;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 8px 10px;
+  z-index: 1000;
+}
+
+.app {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 12px 90px;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  margin: 0 -12px;
+  padding: 10px 12px;
+  text-align: center;
+}
+
+.logo {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 2px solid #f3f4f6;
+}
+
+.header h1 {
+  margin: 6px 0 4px;
+  color: #176b2f;
+  font-size: 1.1rem;
+}
+
+.header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.92rem;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+}
+
+.price {
+  color: #176b2f;
+  font-weight: 700;
+  margin: 8px 0;
+}
+
+.special {
+  background: #fff8dc;
+  border-color: #f59e0b;
+}
+
+.page {
+  display: none;
+  padding-top: 14px;
+}
+
+.page.active {
+  display: block;
+}
+
+.page h2 {
+  margin: 0 0 12px;
+  font-size: 1.15rem;
+}
+
+.note {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.whatsapp-btn,
+.whatsapp-link {
+  background: #25d366;
+  color: #fff;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-top: 1px solid #e5e7eb;
+  background: #fff;
+  padding: 8px 10px;
+}
+
+.bottom-nav-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.nav-btn {
+  background: #176b2f;
+  color: #fff;
+}
+
+#pageIndicator {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 1px;
+}
