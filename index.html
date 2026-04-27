@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Shri Venkatesh Bhojanalay</title>
+<title>Shree Venkatesh Bhojanalay</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body {
@@ -13,16 +15,28 @@ body {
 
 /* HEADER */
 .header {
-  background: green;
-  color: white;
-  padding: 20px;
-  font-size: 24px;
+  background: white;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-/* PAGE STYLE */
+.logo {
+  width: 90px;
+  border-radius: 50%;
+}
+
+.header h2 {
+  margin: 5px 0 0;
+  color: green;
+  font-size: 18px;
+}
+
+/* PAGE */
 .page {
   display: none;
-  padding: 20px;
+  padding: 15px;
 }
 
 .active {
@@ -32,27 +46,59 @@ body {
 /* CARD */
 .card {
   background: white;
-  margin: 15px auto;
+  margin: 12px auto;
   padding: 15px;
   border-radius: 12px;
-  width: 250px;
+  width: 90%;
+  max-width: 400px;
   box-shadow: 2px 2px 10px gray;
 }
 
 .price {
   color: green;
   font-weight: bold;
+  font-size: 18px;
+}
+
+/* SPECIAL */
+.special {
+  background: #fff8dc;
+  border: 2px solid orange;
+}
+
+/* BUTTON BAR */
+.nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  padding: 10px;
+  box-shadow: 0 -2px 10px gray;
 }
 
 /* BUTTON */
 button {
-  padding: 10px 20px;
-  margin: 10px;
+  padding: 12px;
+  margin: 5px;
   border: none;
   background: green;
   color: white;
   border-radius: 8px;
-  cursor: pointer;
+  font-size: 16px;
+  width: 40%;
+}
+
+/* WHATSAPP */
+.whatsapp {
+  display: block;
+  margin: 20px auto;
+  padding: 12px;
+  width: 80%;
+  background: #25D366;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 16px;
 }
 </style>
 
@@ -60,15 +106,29 @@ button {
 
 <body>
 
-<div class="header">Shri Venkatesh Bhojanalay</div>
+<!-- HEADER -->
+<div class="header">
+  <img src="logo.png" class="logo">
+  <h2>Shree Venkatesh Bhojanalay</h2>
+</div>
 
 <!-- PAGE 1 -->
 <div class="page active">
   <h2>Welcome 🙏</h2>
   <p>Fresh Food Available Daily</p>
+
+  <div class="card special">
+    <h3>⭐ Today Special</h3>
+    <p>Bhaji Poli + Taak</p>
+    <p class="price">₹60</p>
+  </div>
+
+  <a href="https://wa.me/9307184905" class="whatsapp">
+    📲 Order on WhatsApp
+  </a>
 </div>
 
-<!-- PAGE 2 (Tea / Coffee / Taak) -->
+<!-- PAGE 2 -->
 <div class="page">
   <h2>Tea / Coffee / Taak</h2>
 
@@ -88,18 +148,18 @@ button {
   </div>
 </div>
 
-<!-- PAGE 3 (Morning Bhaji Poli) -->
+<!-- PAGE 3 -->
 <div class="page">
-  <h2>7:30 AM - Morning Special</h2>
+  <h2>Morning Special (7:30 AM)</h2>
 
   <div class="card">
     <h3>Bhaji Poli</h3>
     <p class="price">₹50</p>
-    <p>(You can change bhaji rates daily)</p>
+    <p>(Rates may change daily)</p>
   </div>
 </div>
 
-<!-- PAGE 4 (Lunch + Dinner) -->
+<!-- PAGE 4 -->
 <div class="page">
   <h2>Lunch & Dinner</h2>
 
@@ -109,14 +169,16 @@ button {
   </div>
 
   <div class="card">
-    <h3>Dinner Available</h3>
+    <h3>Dinner Timing</h3>
     <p>From 12:30 PM onwards</p>
   </div>
 </div>
 
-<!-- BUTTONS -->
-<button onclick="prevPage()">⬅ Previous</button>
-<button onclick="nextPage()">Next ➡</button>
+<!-- NAVIGATION -->
+<div class="nav">
+  <button onclick="prevPage()">⬅ Prev</button>
+  <button onclick="nextPage()">Next ➡</button>
+</div>
 
 <script>
 let currentPage = 0;
